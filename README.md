@@ -28,7 +28,10 @@ const client = new TaamCloud({
 });
 
 async function main() {
-  const embedding = await client.embeddings.create({ input: ['string'], model: 'jina-embeddings-v3' });
+  const embeddingsResponse = await client.embeddings.create({
+    input: ['string'],
+    model: 'jina-embeddings-v3',
+  });
 }
 
 main();
@@ -49,7 +52,7 @@ const client = new TaamCloud({
 
 async function main() {
   const params: TaamCloud.EmbeddingCreateParams = { input: ['string'], model: 'jina-embeddings-v3' };
-  const embedding: unknown = await client.embeddings.create(params);
+  const embeddingsResponse: unknown = await client.embeddings.create(params);
 }
 
 main();
@@ -66,7 +69,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const embedding = await client.embeddings
+  const embeddingsResponse = await client.embeddings
     .create({ input: ['string'], model: 'jina-embeddings-v3' })
     .catch(async (err) => {
       if (err instanceof TaamCloud.APIError) {
@@ -155,11 +158,11 @@ const response = await client.embeddings
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: embedding, response: raw } = await client.embeddings
+const { data: embeddingsResponse, response: raw } = await client.embeddings
   .create({ input: ['string'], model: 'jina-embeddings-v3' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(embedding);
+console.log(embeddingsResponse);
 ```
 
 ### Making custom/undocumented requests
