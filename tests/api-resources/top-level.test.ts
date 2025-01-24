@@ -8,9 +8,9 @@ const client = new TaamCloud({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource files', () => {
+describe('top level methods', () => {
   test('upload: only required params', async () => {
-    const responsePromise = client.files.upload({
+    const responsePromise = client.upload({
       file: await toFile(Buffer.from('# my file contents'), 'README.md'),
     });
     const rawResponse = await responsePromise.asResponse();
@@ -23,7 +23,7 @@ describe('resource files', () => {
   });
 
   test('upload: required and optional params', async () => {
-    const response = await client.files.upload({
+    const response = await client.upload({
       file: await toFile(Buffer.from('# my file contents'), 'README.md'),
       enable_ocr: true,
       enable_vision: true,
