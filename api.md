@@ -1,8 +1,18 @@
+# TaamCloud
+
+Types:
+
+- <code><a href="./src/resources/top-level.ts">UploadResponse</a></code>
+
+Methods:
+
+- <code title="post /upload">client.<a href="./src/index.ts">upload</a>({ ...params }) -> UploadResponse</code>
+
 # Embeddings
 
 Types:
 
-- <code><a href="./src/resources/embeddings.ts">EmbeddingCreateResponse</a></code>
+- <code><a href="./src/resources/embeddings.ts">EmbeddingsResponse</a></code>
 
 Methods:
 
@@ -51,16 +61,6 @@ Types:
 Methods:
 
 - <code title="post /v1/images/generations">client.images.generations.<a href="./src/resources/images/generations.ts">create</a>({ ...params }) -> ImageGenerationResponse</code>
-
-# Files
-
-Types:
-
-- <code><a href="./src/resources/files.ts">FileUploadResponse</a></code>
-
-Methods:
-
-- <code title="post /upload">client.files.<a href="./src/resources/files.ts">upload</a>({ ...params }) -> FileUploadResponse</code>
 
 # Crawl
 

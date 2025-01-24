@@ -5,9 +5,10 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
+import * as TopLevelAPI from './resources/top-level';
+import { UploadParams, UploadResponse } from './resources/top-level';
 import { Crawl, CrawlCreateParams, CrawlResponse, CrawlStatusResponse } from './resources/crawl';
-import { EmbeddingCreateParams, EmbeddingCreateResponse, Embeddings } from './resources/embeddings';
-import { FileUploadParams, FileUploadResponse, Files } from './resources/files';
+import { EmbeddingCreateParams, Embeddings, EmbeddingsResponse } from './resources/embeddings';
 import { MapDiscoverParams, MapResponse, Maps } from './resources/maps';
 import { ModelListResponse, Models } from './resources/models';
 import { Rerank, RerankCreateParams } from './resources/rerank';
@@ -27,7 +28,7 @@ type Environment = keyof typeof environments;
 
 export interface ClientOptions {
   /**
-   * The bearer token used for authentication
+   * The Bearer token for authentication
    */
   bearerToken?: string | undefined;
 
@@ -163,11 +164,20 @@ export class TaamCloud extends Core.APIClient {
   suno: API.Suno = new API.Suno(this);
   models: API.Models = new API.Models(this);
   images: API.Images = new API.Images(this);
-  files: API.Files = new API.Files(this);
   crawl: API.Crawl = new API.Crawl(this);
   scrape: API.Scrape = new API.Scrape(this);
   maps: API.Maps = new API.Maps(this);
   searches: API.Searches = new API.Searches(this);
+
+  /**
+   * Upload and process files with optional OCR and Vision capabilities
+   */
+  upload(
+    body: TopLevelAPI.UploadParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<TopLevelAPI.UploadResponse> {
+    return this.post('/upload', Core.multipartFormRequestOptions({ body, ...options }));
+  }
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -211,7 +221,6 @@ TaamCloud.Chat = Chat;
 TaamCloud.Suno = Suno;
 TaamCloud.Models = Models;
 TaamCloud.Images = Images;
-TaamCloud.Files = Files;
 TaamCloud.Crawl = Crawl;
 TaamCloud.Scrape = Scrape;
 TaamCloud.Maps = Maps;
@@ -219,9 +228,11 @@ TaamCloud.Searches = Searches;
 export declare namespace TaamCloud {
   export type RequestOptions = Core.RequestOptions;
 
+  export { type UploadResponse as UploadResponse, type UploadParams as UploadParams };
+
   export {
     Embeddings as Embeddings,
-    type EmbeddingCreateResponse as EmbeddingCreateResponse,
+    type EmbeddingsResponse as EmbeddingsResponse,
     type EmbeddingCreateParams as EmbeddingCreateParams,
   };
 
@@ -234,12 +245,6 @@ export declare namespace TaamCloud {
   export { Models as Models, type ModelListResponse as ModelListResponse };
 
   export { Images as Images };
-
-  export {
-    Files as Files,
-    type FileUploadResponse as FileUploadResponse,
-    type FileUploadParams as FileUploadParams,
-  };
 
   export {
     Crawl as Crawl,
