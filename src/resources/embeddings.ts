@@ -12,7 +12,7 @@ export class Embeddings extends APIResource {
   }
 }
 
-export type EmbeddingCreateResponse = unknown;
+export type EmbeddingsResponse = unknown;
 
 export interface EmbeddingCreateParams {
   input: Array<string>;
@@ -22,7 +22,7 @@ export interface EmbeddingCreateParams {
 
 export declare namespace Embeddings {
   export {
-    type EmbeddingCreateResponse as EmbeddingCreateResponse,
+    type EmbeddingsResponse as EmbeddingsResponse,
     type EmbeddingCreateParams as EmbeddingCreateParams,
   };
 }
