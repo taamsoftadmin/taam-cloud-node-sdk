@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-02-05)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/taamsoftadmin/taam-cloud-node-sdk/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **client:** send `X-Stainless-Timeout` header ([#10](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/10)) ([83ea481](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/83ea4819bfd1bd9d81c0efadc6c4ae11ff6b03f9))
+
+
+### Chores
+
+* **internal:** codegen related update ([#8](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/8)) ([80c7169](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/80c716954447b0bf977b4c8ab82d6f16473c8980))
+
 ## 0.1.0-alpha.1 (2025-01-24)
 
 Full Changelog: [v0.0.1-alpha.1...v0.1.0-alpha.1](https://github.com/taamsoftadmin/taam-cloud-node-sdk/compare/v0.0.1-alpha.1...v0.1.0-alpha.1)
