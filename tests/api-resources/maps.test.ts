@@ -25,7 +25,7 @@ describe('resource maps', () => {
       url: 'url',
       ignoreSitemap: true,
       includeSubdomains: true,
-      limit: 0,
+      limit: 5000,
       search: 'search',
       sitemapOnly: true,
     });
