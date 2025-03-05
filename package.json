@@ -1,6 +1,6 @@
 {
   "name": "taam-cloud",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "description": "The official TypeScript library for the Taam Cloud API",
   "author": "Taam Cloud <dev-feedback@taam.cloud>",
   "types": "dist/index.d.ts",
