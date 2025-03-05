@@ -20,7 +20,7 @@ or products provided by Taam Cloud please follow the respective company's securi
 
 ### Taam Cloud Terms and Policies
 
-Please contact dev-feedback@taam-cloud.com for any questions or concerns regarding security of our services.
+Please contact dev-feedback@taam.cloud for any questions or concerns regarding security of our services.
 
 ---
 

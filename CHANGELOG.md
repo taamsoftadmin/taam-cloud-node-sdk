@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-03-05)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/taamsoftadmin/taam-cloud-node-sdk/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **api:** update via SDK Studio ([#20](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/20)) ([3143be5](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/3143be5b00c2b292c1aec7d32ee05c9b001dbf45))
+
 ## 0.1.0-alpha.3 (2025-03-05)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/taamsoftadmin/taam-cloud-node-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
