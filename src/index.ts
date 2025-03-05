@@ -5,43 +5,19 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import * as TopLevelAPI from './resources/top-level';
-import { UploadParams, UploadResponse } from './resources/top-level';
-import { Crawl, CrawlCreateParams, CrawlResponse, CrawlStatusResponse } from './resources/crawl';
-import { EmbeddingCreateParams, Embeddings, EmbeddingsResponse } from './resources/embeddings';
-import { MapDiscoverParams, MapResponse, Maps } from './resources/maps';
+import { Chat, ChatCreateCompletionParams } from './resources/chat';
+import { EmbeddingCreateParams, EmbeddingCreateResponse, Embeddings } from './resources/embeddings';
+import { ImageGenerateParams, ImageGenerateResponse, Images } from './resources/images';
 import { ModelListResponse, Models } from './resources/models';
 import { Rerank, RerankCreateParams } from './resources/rerank';
-import { Scrape, ScrapeCreateParams, ScrapeResponse } from './resources/scrape';
-import { SearchPerformParams, SearchResponse, Searches } from './resources/searches';
-import { Chat } from './resources/chat/chat';
-import { Images } from './resources/images/images';
+import { Web, WebCreateParams, WebCreateResponse } from './resources/web';
 import { Suno } from './resources/suno/suno';
-
-const environments = {
-  production: 'https://newapi.taam.cloud',
-  environment_1: 'https://uploud.taam.cloud',
-  environment_2: 'https://crawl.taam.cloud',
-  environment_3: 'https://apisearch.taam.cloud',
-};
-type Environment = keyof typeof environments;
 
 export interface ClientOptions {
   /**
-   * The Bearer token for authentication
+   * Defaults to process.env['TAAM_CLOUD_BEARER_TOKEN'].
    */
   bearerToken?: string | undefined;
-
-  /**
-   * Specifies the environment to use for the API.
-   *
-   * Each environment maps to a different base URL:
-   * - `production` corresponds to `https://newapi.taam.cloud`
-   * - `environment_1` corresponds to `https://uploud.taam.cloud`
-   * - `environment_2` corresponds to `https://crawl.taam.cloud`
-   * - `environment_3` corresponds to `https://apisearch.taam.cloud`
-   */
-  environment?: Environment | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -111,9 +87,8 @@ export class TaamCloud extends Core.APIClient {
   /**
    * API Client for interfacing with the Taam Cloud API.
    *
-   * @param {string | undefined} [opts.bearerToken=process.env['BEARER_TOKEN'] ?? undefined]
-   * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
-   * @param {string} [opts.baseURL=process.env['TAAM_CLOUD_BASE_URL'] ?? https://newapi.taam.cloud] - Override the default base URL for the API.
+   * @param {string | undefined} [opts.bearerToken=process.env['TAAM_CLOUD_BEARER_TOKEN'] ?? undefined]
+   * @param {string} [opts.baseURL=process.env['TAAM_CLOUD_BASE_URL'] ?? https://api.taam.cloud] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -123,30 +98,23 @@ export class TaamCloud extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('TAAM_CLOUD_BASE_URL'),
-    bearerToken = Core.readEnv('BEARER_TOKEN'),
+    bearerToken = Core.readEnv('TAAM_CLOUD_BEARER_TOKEN'),
     ...opts
   }: ClientOptions = {}) {
     if (bearerToken === undefined) {
       throw new Errors.TaamCloudError(
-        "The BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the TaamCloud client with an bearerToken option, like new TaamCloud({ bearerToken: 'My Bearer Token' }).",
+        "The TAAM_CLOUD_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the TaamCloud client with an bearerToken option, like new TaamCloud({ bearerToken: 'My Bearer Token' }).",
       );
     }
 
     const options: ClientOptions = {
       bearerToken,
       ...opts,
-      baseURL,
-      environment: opts.environment ?? 'production',
+      baseURL: baseURL || `https://api.taam.cloud`,
     };
 
-    if (baseURL && opts.environment) {
-      throw new Errors.TaamCloudError(
-        'Ambiguous URL; The `baseURL` option (or TAAM_CLOUD_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null',
-      );
-    }
-
     super({
-      baseURL: options.baseURL || environments[options.environment || 'production'],
+      baseURL: options.baseURL!,
       timeout: options.timeout ?? 60000 /* 1 minute */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
@@ -164,20 +132,7 @@ export class TaamCloud extends Core.APIClient {
   suno: API.Suno = new API.Suno(this);
   models: API.Models = new API.Models(this);
   images: API.Images = new API.Images(this);
-  crawl: API.Crawl = new API.Crawl(this);
-  scrape: API.Scrape = new API.Scrape(this);
-  maps: API.Maps = new API.Maps(this);
-  searches: API.Searches = new API.Searches(this);
-
-  /**
-   * Upload and process files with optional OCR and Vision capabilities
-   */
-  upload(
-    body: TopLevelAPI.UploadParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<TopLevelAPI.UploadResponse> {
-    return this.post('/upload', Core.multipartFormRequestOptions({ body, ...options }));
-  }
+  web: API.Web = new API.Web(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -221,51 +176,31 @@ TaamCloud.Chat = Chat;
 TaamCloud.Suno = Suno;
 TaamCloud.Models = Models;
 TaamCloud.Images = Images;
-TaamCloud.Crawl = Crawl;
-TaamCloud.Scrape = Scrape;
-TaamCloud.Maps = Maps;
-TaamCloud.Searches = Searches;
+TaamCloud.Web = Web;
 export declare namespace TaamCloud {
   export type RequestOptions = Core.RequestOptions;
 
-  export { type UploadResponse as UploadResponse, type UploadParams as UploadParams };
-
   export {
     Embeddings as Embeddings,
-    type EmbeddingsResponse as EmbeddingsResponse,
+    type EmbeddingCreateResponse as EmbeddingCreateResponse,
     type EmbeddingCreateParams as EmbeddingCreateParams,
   };
 
   export { Rerank as Rerank, type RerankCreateParams as RerankCreateParams };
 
-  export { Chat as Chat };
+  export { Chat as Chat, type ChatCreateCompletionParams as ChatCreateCompletionParams };
 
   export { Suno as Suno };
 
   export { Models as Models, type ModelListResponse as ModelListResponse };
 
-  export { Images as Images };
-
   export {
-    Crawl as Crawl,
-    type CrawlResponse as CrawlResponse,
-    type CrawlStatusResponse as CrawlStatusResponse,
-    type CrawlCreateParams as CrawlCreateParams,
+    Images as Images,
+    type ImageGenerateResponse as ImageGenerateResponse,
+    type ImageGenerateParams as ImageGenerateParams,
   };
 
-  export {
-    Scrape as Scrape,
-    type ScrapeResponse as ScrapeResponse,
-    type ScrapeCreateParams as ScrapeCreateParams,
-  };
-
-  export { Maps as Maps, type MapResponse as MapResponse, type MapDiscoverParams as MapDiscoverParams };
-
-  export {
-    Searches as Searches,
-    type SearchResponse as SearchResponse,
-    type SearchPerformParams as SearchPerformParams,
-  };
+  export { Web as Web, type WebCreateResponse as WebCreateResponse, type WebCreateParams as WebCreateParams };
 }
 
 export { toFile, fileFromPath } from './uploads';

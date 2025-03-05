@@ -1,27 +1,24 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../resource';
+import * as Core from '../core';
 
-export class Generations extends APIResource {
+export class Images extends APIResource {
   /**
    * Create images from text descriptions
    */
-  create(
-    body: GenerationCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ImageGenerationResponse> {
+  generate(body: ImageGenerateParams, options?: Core.RequestOptions): Core.APIPromise<ImageGenerateResponse> {
     return this._client.post('/v1/images/generations', { body, ...options });
   }
 }
 
-export interface ImageGenerationResponse {
+export interface ImageGenerateResponse {
   created?: number;
 
-  data?: Array<ImageGenerationResponse.Data>;
+  data?: Array<ImageGenerateResponse.Data>;
 }
 
-export namespace ImageGenerationResponse {
+export namespace ImageGenerateResponse {
   export interface Data {
     revised_prompt?: string;
 
@@ -29,7 +26,7 @@ export namespace ImageGenerationResponse {
   }
 }
 
-export interface GenerationCreateParams {
+export interface ImageGenerateParams {
   /**
    * Text description of the desired image
    */
@@ -49,9 +46,9 @@ export interface GenerationCreateParams {
   style?: 'natural' | 'vivid';
 }
 
-export declare namespace Generations {
+export declare namespace Images {
   export {
-    type ImageGenerationResponse as ImageGenerationResponse,
-    type GenerationCreateParams as GenerationCreateParams,
+    type ImageGenerateResponse as ImageGenerateResponse,
+    type ImageGenerateParams as ImageGenerateParams,
   };
 }

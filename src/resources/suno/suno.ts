@@ -1,15 +1,15 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
-import * as MusicAPI from './music';
-import { Music, MusicSubmitParams } from './music';
+import * as SubmitAPI from './submit';
+import { Submit, SubmitGenerateMusicParams } from './submit';
 
 export class Suno extends APIResource {
-  music: MusicAPI.Music = new MusicAPI.Music(this._client);
+  submit: SubmitAPI.Submit = new SubmitAPI.Submit(this._client);
 }
 
-Suno.Music = Music;
+Suno.Submit = Submit;
 
 export declare namespace Suno {
-  export { Music as Music, type MusicSubmitParams as MusicSubmitParams };
+  export { Submit as Submit, type SubmitGenerateMusicParams as SubmitGenerateMusicParams };
 }

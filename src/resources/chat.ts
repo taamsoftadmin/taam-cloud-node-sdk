@@ -1,13 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../resource';
+import * as Core from '../core';
 
-export class Completions extends APIResource {
+export class Chat extends APIResource {
   /**
    * Chat completions
    */
-  create(body: CompletionCreateParams, options?: Core.RequestOptions): Core.APIPromise<void> {
+  createCompletion(body: ChatCreateCompletionParams, options?: Core.RequestOptions): Core.APIPromise<void> {
     return this._client.post('/v1/chat/completions', {
       body,
       ...options,
@@ -16,8 +16,8 @@ export class Completions extends APIResource {
   }
 }
 
-export interface CompletionCreateParams {
-  messages: Array<CompletionCreateParams.Message>;
+export interface ChatCreateCompletionParams {
+  messages: Array<ChatCreateCompletionParams.Message>;
 
   model: string;
 
@@ -31,7 +31,7 @@ export interface CompletionCreateParams {
   temperature?: number;
 }
 
-export namespace CompletionCreateParams {
+export namespace ChatCreateCompletionParams {
   export interface Message {
     content: string;
 
@@ -39,6 +39,6 @@ export namespace CompletionCreateParams {
   }
 }
 
-export declare namespace Completions {
-  export { type CompletionCreateParams as CompletionCreateParams };
+export declare namespace Chat {
+  export { type ChatCreateCompletionParams as ChatCreateCompletionParams };
 }

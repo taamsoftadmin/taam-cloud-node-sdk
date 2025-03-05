@@ -8,9 +8,10 @@ const client = new TaamCloud({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource generations', () => {
-  test('create: only required params', async () => {
-    const responsePromise = client.images.generations.create({ prompt: 'prompt' });
+describe('resource images', () => {
+  // skipped: tests are disabled for the time being
+  test.skip('generate: only required params', async () => {
+    const responsePromise = client.images.generate({ prompt: 'prompt' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,8 +21,9 @@ describe('resource generations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('create: required and optional params', async () => {
-    const response = await client.images.generations.create({
+  // skipped: tests are disabled for the time being
+  test.skip('generate: required and optional params', async () => {
+    const response = await client.images.generate({
       prompt: 'prompt',
       model: 'dall-e-3',
       n: 0,

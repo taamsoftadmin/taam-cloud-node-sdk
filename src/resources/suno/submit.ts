@@ -3,11 +3,11 @@
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
 
-export class Music extends APIResource {
+export class Submit extends APIResource {
   /**
    * Generate music
    */
-  submit(body: MusicSubmitParams, options?: Core.RequestOptions): Core.APIPromise<void> {
+  generateMusic(body: SubmitGenerateMusicParams, options?: Core.RequestOptions): Core.APIPromise<void> {
     return this._client.post('/suno/submit/music', {
       body,
       ...options,
@@ -16,7 +16,7 @@ export class Music extends APIResource {
   }
 }
 
-export interface MusicSubmitParams {
+export interface SubmitGenerateMusicParams {
   mv?: string;
 
   prompt?: string;
@@ -26,6 +26,6 @@ export interface MusicSubmitParams {
   title?: string;
 }
 
-export declare namespace Music {
-  export { type MusicSubmitParams as MusicSubmitParams };
+export declare namespace Submit {
+  export { type SubmitGenerateMusicParams as SubmitGenerateMusicParams };
 }
