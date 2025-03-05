@@ -1,13 +1,5 @@
 # TaamCloud
 
-Types:
-
-- <code><a href="./src/resources/top-level.ts">UploadResponse</a></code>
-
-Methods:
-
-- <code title="post /upload">client.<a href="./src/index.ts">upload</a>({ ...params }) -> UploadResponse</code>
-
 # Embeddings
 
 Types:
@@ -69,20 +61,11 @@ Types:
 - <code><a href="./src/resources/crawl.ts">CrawlResponse</a></code>
 - <code><a href="./src/resources/crawl.ts">CrawlStatusResponse</a></code>
 
-Methods:
-
-- <code title="post /v1/crawl">client.crawl.<a href="./src/resources/crawl.ts">create</a>({ ...params }) -> CrawlResponse</code>
-- <code title="get /v1/crawl/{id}">client.crawl.<a href="./src/resources/crawl.ts">retrieve</a>(id) -> CrawlStatusResponse</code>
-
 # Scrape
 
 Types:
 
 - <code><a href="./src/resources/scrape.ts">ScrapeResponse</a></code>
-
-Methods:
-
-- <code title="post /v1/scrape">client.scrape.<a href="./src/resources/scrape.ts">create</a>({ ...params }) -> ScrapeResponse</code>
 
 # Maps
 
@@ -90,16 +73,8 @@ Types:
 
 - <code><a href="./src/resources/maps.ts">MapResponse</a></code>
 
-Methods:
-
-- <code title="post /v1/map">client.maps.<a href="./src/resources/maps.ts">discover</a>({ ...params }) -> MapResponse</code>
-
 # Searches
 
 Types:
 
 - <code><a href="./src/resources/searches.ts">SearchResponse</a></code>
-
-Methods:
-
-- <code title="post /api/search">client.searches.<a href="./src/resources/searches.ts">perform</a>({ ...params }) -> SearchResponse</code>

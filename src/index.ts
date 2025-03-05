@@ -5,15 +5,13 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import * as TopLevelAPI from './resources/top-level';
-import { UploadParams, UploadResponse } from './resources/top-level';
-import { Crawl, CrawlCreateParams, CrawlResponse, CrawlStatusResponse } from './resources/crawl';
+import { Crawl, CrawlResponse, CrawlStatusResponse } from './resources/crawl';
 import { EmbeddingCreateParams, Embeddings, EmbeddingsResponse } from './resources/embeddings';
-import { MapDiscoverParams, MapResponse, Maps } from './resources/maps';
+import { MapResponse, Maps } from './resources/maps';
 import { ModelListResponse, Models } from './resources/models';
 import { Rerank, RerankCreateParams } from './resources/rerank';
-import { Scrape, ScrapeCreateParams, ScrapeResponse } from './resources/scrape';
-import { SearchPerformParams, SearchResponse, Searches } from './resources/searches';
+import { Scrape, ScrapeResponse } from './resources/scrape';
+import { SearchResponse, Searches } from './resources/searches';
 import { Chat } from './resources/chat/chat';
 import { Images } from './resources/images/images';
 import { Suno } from './resources/suno/suno';
@@ -169,16 +167,6 @@ export class TaamCloud extends Core.APIClient {
   maps: API.Maps = new API.Maps(this);
   searches: API.Searches = new API.Searches(this);
 
-  /**
-   * Upload and process files with optional OCR and Vision capabilities
-   */
-  upload(
-    body: TopLevelAPI.UploadParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<TopLevelAPI.UploadResponse> {
-    return this.post('/upload', Core.multipartFormRequestOptions({ body, ...options }));
-  }
-
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
   }
@@ -228,8 +216,6 @@ TaamCloud.Searches = Searches;
 export declare namespace TaamCloud {
   export type RequestOptions = Core.RequestOptions;
 
-  export { type UploadResponse as UploadResponse, type UploadParams as UploadParams };
-
   export {
     Embeddings as Embeddings,
     type EmbeddingsResponse as EmbeddingsResponse,
@@ -250,22 +236,13 @@ export declare namespace TaamCloud {
     Crawl as Crawl,
     type CrawlResponse as CrawlResponse,
     type CrawlStatusResponse as CrawlStatusResponse,
-    type CrawlCreateParams as CrawlCreateParams,
   };
 
-  export {
-    Scrape as Scrape,
-    type ScrapeResponse as ScrapeResponse,
-    type ScrapeCreateParams as ScrapeCreateParams,
-  };
+  export { Scrape as Scrape, type ScrapeResponse as ScrapeResponse };
 
-  export { Maps as Maps, type MapResponse as MapResponse, type MapDiscoverParams as MapDiscoverParams };
+  export { Maps as Maps, type MapResponse as MapResponse };
 
-  export {
-    Searches as Searches,
-    type SearchResponse as SearchResponse,
-    type SearchPerformParams as SearchPerformParams,
-  };
+  export { Searches as Searches, type SearchResponse as SearchResponse };
 }
 
 export { toFile, fileFromPath } from './uploads';
