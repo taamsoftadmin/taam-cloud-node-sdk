@@ -183,30 +183,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['TAAM_CLOUD_BASE_URL'] = ''; // empty
       const client = new TaamCloud({ bearerToken: 'My Bearer Token' });
-      expect(client.baseURL).toEqual('https://newapi.taam.cloud');
+      expect(client.baseURL).toEqual('https://api.taam.cloud');
     });
 
     test('blank env variable', () => {
       process.env['TAAM_CLOUD_BASE_URL'] = '  '; // blank
       const client = new TaamCloud({ bearerToken: 'My Bearer Token' });
-      expect(client.baseURL).toEqual('https://newapi.taam.cloud');
-    });
-
-    test('env variable with environment', () => {
-      process.env['TAAM_CLOUD_BASE_URL'] = 'https://example.com/from_env';
-
-      expect(
-        () => new TaamCloud({ bearerToken: 'My Bearer Token', environment: 'production' }),
-      ).toThrowErrorMatchingInlineSnapshot(
-        `"Ambiguous URL; The \`baseURL\` option (or TAAM_CLOUD_BASE_URL env var) and the \`environment\` option are given. If you want to use the environment you must pass baseURL: null"`,
-      );
-
-      const client = new TaamCloud({
-        bearerToken: 'My Bearer Token',
-        baseURL: null,
-        environment: 'production',
-      });
-      expect(client.baseURL).toEqual('https://newapi.taam.cloud');
+      expect(client.baseURL).toEqual('https://api.taam.cloud');
     });
   });
 
@@ -221,14 +204,14 @@ describe('instantiate client', () => {
 
   test('with environment variable arguments', () => {
     // set options via env var
-    process.env['BEARER_TOKEN'] = 'My Bearer Token';
+    process.env['TAAM_CLOUD_BEARER_TOKEN'] = 'My Bearer Token';
     const client = new TaamCloud();
     expect(client.bearerToken).toBe('My Bearer Token');
   });
 
   test('with overridden environment variable arguments', () => {
     // set options via env var
-    process.env['BEARER_TOKEN'] = 'another My Bearer Token';
+    process.env['TAAM_CLOUD_BEARER_TOKEN'] = 'another My Bearer Token';
     const client = new TaamCloud({ bearerToken: 'My Bearer Token' });
     expect(client.bearerToken).toBe('My Bearer Token');
   });

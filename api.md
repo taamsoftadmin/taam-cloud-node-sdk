@@ -1,10 +1,8 @@
-# TaamCloud
-
 # Embeddings
 
 Types:
 
-- <code><a href="./src/resources/embeddings.ts">EmbeddingsResponse</a></code>
+- <code><a href="./src/resources/embeddings.ts">EmbeddingCreateResponse</a></code>
 
 Methods:
 
@@ -18,19 +16,17 @@ Methods:
 
 # Chat
 
-## Completions
-
 Methods:
 
-- <code title="post /v1/chat/completions">client.chat.completions.<a href="./src/resources/chat/completions.ts">create</a>({ ...params }) -> void</code>
+- <code title="post /v1/chat/completions">client.chat.<a href="./src/resources/chat.ts">createCompletion</a>({ ...params }) -> void</code>
 
 # Suno
 
-## Music
+## Submit
 
 Methods:
 
-- <code title="post /suno/submit/music">client.suno.music.<a href="./src/resources/suno/music.ts">submit</a>({ ...params }) -> void</code>
+- <code title="post /suno/submit/music">client.suno.submit.<a href="./src/resources/suno/submit.ts">generateMusic</a>({ ...params }) -> void</code>
 
 # Models
 
@@ -44,37 +40,20 @@ Methods:
 
 # Images
 
-## Generations
-
 Types:
 
-- <code><a href="./src/resources/images/generations.ts">ImageGenerationResponse</a></code>
+- <code><a href="./src/resources/images.ts">ImageGenerateResponse</a></code>
 
 Methods:
 
-- <code title="post /v1/images/generations">client.images.generations.<a href="./src/resources/images/generations.ts">create</a>({ ...params }) -> ImageGenerationResponse</code>
+- <code title="post /v1/images/generations">client.images.<a href="./src/resources/images.ts">generate</a>({ ...params }) -> ImageGenerateResponse</code>
 
-# Crawl
-
-Types:
-
-- <code><a href="./src/resources/crawl.ts">CrawlResponse</a></code>
-- <code><a href="./src/resources/crawl.ts">CrawlStatusResponse</a></code>
-
-# Scrape
+# Web
 
 Types:
 
-- <code><a href="./src/resources/scrape.ts">ScrapeResponse</a></code>
+- <code><a href="./src/resources/web.ts">WebCreateResponse</a></code>
 
-# Maps
+Methods:
 
-Types:
-
-- <code><a href="./src/resources/maps.ts">MapResponse</a></code>
-
-# Searches
-
-Types:
-
-- <code><a href="./src/resources/searches.ts">SearchResponse</a></code>
+- <code title="post /v1/web">client.web.<a href="./src/resources/web.ts">create</a>({ ...params }) -> WebCreateResponse</code>

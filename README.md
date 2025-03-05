@@ -11,8 +11,11 @@ It is generated with [Stainless](https://www.stainless.com/).
 ## Installation
 
 ```sh
-npm install taam-cloud
+npm install git+ssh://git@github.com:stainless-sdks/taam-cloud-node.git
 ```
+
+> [!NOTE]
+> Once this package is [published to npm](https://app.stainless.com/docs/guides/publish), this will become: `npm install taam-cloud`
 
 ## Usage
 
@@ -23,15 +26,11 @@ The full API of this library can be found in [api.md](api.md).
 import TaamCloud from 'taam-cloud';
 
 const client = new TaamCloud({
-  bearerToken: process.env['BEARER_TOKEN'], // This is the default and can be omitted
-  environment: 'environment_1', // or 'production' | 'environment_2' | 'environment_3'; defaults to 'production'
+  bearerToken: process.env['TAAM_CLOUD_BEARER_TOKEN'], // This is the default and can be omitted
 });
 
 async function main() {
-  const embeddingsResponse = await client.embeddings.create({
-    input: ['string'],
-    model: 'jina-embeddings-v3',
-  });
+  const embedding = await client.embeddings.create({ input: ['string'], model: 'jina-embeddings-v3' });
 }
 
 main();
@@ -46,13 +45,12 @@ This library includes TypeScript definitions for all request params and response
 import TaamCloud from 'taam-cloud';
 
 const client = new TaamCloud({
-  bearerToken: process.env['BEARER_TOKEN'], // This is the default and can be omitted
-  environment: 'environment_1', // or 'production' | 'environment_2' | 'environment_3'; defaults to 'production'
+  bearerToken: process.env['TAAM_CLOUD_BEARER_TOKEN'], // This is the default and can be omitted
 });
 
 async function main() {
   const params: TaamCloud.EmbeddingCreateParams = { input: ['string'], model: 'jina-embeddings-v3' };
-  const embeddingsResponse: unknown = await client.embeddings.create(params);
+  const embedding: unknown = await client.embeddings.create(params);
 }
 
 main();
@@ -69,7 +67,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const embeddingsResponse = await client.embeddings
+  const embedding = await client.embeddings
     .create({ input: ['string'], model: 'jina-embeddings-v3' })
     .catch(async (err) => {
       if (err instanceof TaamCloud.APIError) {
@@ -158,11 +156,11 @@ const response = await client.embeddings
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: embeddingsResponse, response: raw } = await client.embeddings
+const { data: embedding, response: raw } = await client.embeddings
   .create({ input: ['string'], model: 'jina-embeddings-v3' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(embeddingsResponse);
+console.log(embedding);
 ```
 
 ### Making custom/undocumented requests
@@ -225,7 +223,7 @@ import TaamCloud from 'taam-cloud';
 ```
 
 To do the inverse, add `import "taam-cloud/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/taamsoftadmin/taam-cloud-node-sdk/tree/main/src/_shims#readme)).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/stainless-sdks/taam-cloud-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
 
@@ -284,7 +282,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/taamsoftadmin/taam-cloud-node-sdk/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/taam-cloud-node/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 

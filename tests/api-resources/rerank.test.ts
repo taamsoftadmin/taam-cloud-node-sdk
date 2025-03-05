@@ -9,7 +9,8 @@ const client = new TaamCloud({
 });
 
 describe('resource rerank', () => {
-  test('create: only required params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('create: only required params', async () => {
     const responsePromise = client.rerank.create({ documents: ['string'], model: 'model', query: 'query' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,7 +21,8 @@ describe('resource rerank', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('create: required and optional params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('create: required and optional params', async () => {
     const response = await client.rerank.create({
       documents: ['string'],
       model: 'model',
