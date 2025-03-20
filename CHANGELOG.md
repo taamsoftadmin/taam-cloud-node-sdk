@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-03-20)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/taamsoftadmin/taam-cloud-node-sdk/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* add SKIP_BREW env var to ./scripts/bootstrap ([#22](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/22)) ([80baf0c](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/80baf0c64a73a3f20f42aeb0bdfb5b2aeb0f2388))
+* **api:** update via SDK Studio ([#20](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/20)) ([3143be5](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/3143be5b00c2b292c1aec7d32ee05c9b001dbf45))
+* **api:** update via SDK Studio ([#26](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/26)) ([7732d8b](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/7732d8bf186f4eb56cc8c12bdd8c08e1a7bcb879))
+* **api:** update via SDK Studio ([#27](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/27)) ([4c51f6f](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/4c51f6f2b35ab231fe8c763c3347320ef273d1d3))
+* **client:** accept RFC6838 JSON content types ([#23](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/23)) ([b476bc5](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/b476bc50b18349c459d0ddf2c2b77f5939e8d07a))
+
+
+### Bug Fixes
+
+* **exports:** ensure resource imports don't require /index ([#25](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/25)) ([621401c](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/621401c1bb9c808760a865179c6722c08cf96fc2))
+
+
+### Chores
+
+* **internal:** remove extra empty newlines ([#24](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/24)) ([6cc9e04](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/6cc9e044371367f2eb1b13948d18673d35ec6bc1))
+
 ## 0.1.0-alpha.3 (2025-03-05)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/taamsoftadmin/taam-cloud-node-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
