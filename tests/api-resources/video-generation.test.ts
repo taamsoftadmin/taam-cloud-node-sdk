@@ -8,17 +8,12 @@ const client = new TaamCloud({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource rerank', () => {
+describe('resource videoGeneration', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: only required params', async () => {
-    const responsePromise = client.rerank.create({
-      documents: [
-        'Exercise improves cardiovascular health and reduces stress.',
-        'Proper nutrition is essential for overall well-being.',
-        'Sleep quality affects mental and physical performance.',
-      ],
-      model: 'mixr-v1',
-      query: 'What are the health benefits of exercise?',
+    const responsePromise = client.videoGeneration.create({
+      model: 'T2V-01-Director',
+      prompt: 'A spaceship landing on a distant planet [camera panning right]',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -31,15 +26,10 @@ describe('resource rerank', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('create: required and optional params', async () => {
-    const response = await client.rerank.create({
-      documents: [
-        'Exercise improves cardiovascular health and reduces stress.',
-        'Proper nutrition is essential for overall well-being.',
-        'Sleep quality affects mental and physical performance.',
-      ],
-      model: 'mixr-v1',
-      query: 'What are the health benefits of exercise?',
-      top_n: 2,
+    const response = await client.videoGeneration.create({
+      model: 'T2V-01-Director',
+      prompt: 'A spaceship landing on a distant planet [camera panning right]',
+      first_frame_image: 'first_frame_image',
     });
   });
 });
