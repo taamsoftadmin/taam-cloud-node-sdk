@@ -57,3 +57,45 @@ Types:
 Methods:
 
 - <code title="post /v1/web">client.web.<a href="./src/resources/web.ts">create</a>({ ...params }) -> WebCreateResponse</code>
+
+# Files
+
+Types:
+
+- <code><a href="./src/resources/files.ts">FileRetrieveResponse</a></code>
+- <code><a href="./src/resources/files.ts">FileUploadResponse</a></code>
+
+Methods:
+
+- <code title="get /v1/files/retrieve">client.files.<a href="./src/resources/files.ts">retrieve</a>({ ...params }) -> FileRetrieveResponse</code>
+- <code title="post /v1/files">client.files.<a href="./src/resources/files.ts">upload</a>({ ...params }) -> FileUploadResponse</code>
+
+# Upload
+
+Types:
+
+- <code><a href="./src/resources/upload.ts">UploadCreateResponse</a></code>
+
+Methods:
+
+- <code title="post /upload">client.upload.<a href="./src/resources/upload.ts">create</a>({ ...params }) -> UploadCreateResponse</code>
+
+# VideoGeneration
+
+Types:
+
+- <code><a href="./src/resources/video-generation.ts">VideoGenerationCreateResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/video_generation">client.videoGeneration.<a href="./src/resources/video-generation.ts">create</a>({ ...params }) -> VideoGenerationCreateResponse</code>
+
+# Query
+
+Types:
+
+- <code><a href="./src/resources/query.ts">QueryCheckVideoGenerationStatusResponse</a></code>
+
+Methods:
+
+- <code title="get /v1/query/video_generation">client.query.<a href="./src/resources/query.ts">checkVideoGenerationStatus</a>({ ...params }) -> QueryCheckVideoGenerationStatusResponse</code>

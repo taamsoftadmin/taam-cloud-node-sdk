@@ -7,9 +7,27 @@ import * as Uploads from './uploads';
 import * as API from './resources/index';
 import { Chat, ChatCreateCompletionParams } from './resources/chat';
 import { EmbeddingCreateParams, EmbeddingCreateResponse, Embeddings } from './resources/embeddings';
+import {
+  FileRetrieveParams,
+  FileRetrieveResponse,
+  FileUploadParams,
+  FileUploadResponse,
+  Files,
+} from './resources/files';
 import { ImageGenerateParams, ImageGenerateResponse, Images } from './resources/images';
 import { ModelListResponse, Models } from './resources/models';
+import {
+  Query,
+  QueryCheckVideoGenerationStatusParams,
+  QueryCheckVideoGenerationStatusResponse,
+} from './resources/query';
 import { Rerank, RerankCreateParams } from './resources/rerank';
+import { Upload, UploadCreateParams, UploadCreateResponse } from './resources/upload';
+import {
+  VideoGeneration,
+  VideoGenerationCreateParams,
+  VideoGenerationCreateResponse,
+} from './resources/video-generation';
 import { Web, WebCreateParams, WebCreateResponse } from './resources/web';
 import { Suno } from './resources/suno/suno';
 
@@ -133,6 +151,10 @@ export class TaamCloud extends Core.APIClient {
   models: API.Models = new API.Models(this);
   images: API.Images = new API.Images(this);
   web: API.Web = new API.Web(this);
+  files: API.Files = new API.Files(this);
+  upload: API.Upload = new API.Upload(this);
+  videoGeneration: API.VideoGeneration = new API.VideoGeneration(this);
+  query: API.Query = new API.Query(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -177,6 +199,10 @@ TaamCloud.Suno = Suno;
 TaamCloud.Models = Models;
 TaamCloud.Images = Images;
 TaamCloud.Web = Web;
+TaamCloud.Files = Files;
+TaamCloud.Upload = Upload;
+TaamCloud.VideoGeneration = VideoGeneration;
+TaamCloud.Query = Query;
 export declare namespace TaamCloud {
   export type RequestOptions = Core.RequestOptions;
 
@@ -201,6 +227,32 @@ export declare namespace TaamCloud {
   };
 
   export { Web as Web, type WebCreateResponse as WebCreateResponse, type WebCreateParams as WebCreateParams };
+
+  export {
+    Files as Files,
+    type FileRetrieveResponse as FileRetrieveResponse,
+    type FileUploadResponse as FileUploadResponse,
+    type FileRetrieveParams as FileRetrieveParams,
+    type FileUploadParams as FileUploadParams,
+  };
+
+  export {
+    Upload as Upload,
+    type UploadCreateResponse as UploadCreateResponse,
+    type UploadCreateParams as UploadCreateParams,
+  };
+
+  export {
+    VideoGeneration as VideoGeneration,
+    type VideoGenerationCreateResponse as VideoGenerationCreateResponse,
+    type VideoGenerationCreateParams as VideoGenerationCreateParams,
+  };
+
+  export {
+    Query as Query,
+    type QueryCheckVideoGenerationStatusResponse as QueryCheckVideoGenerationStatusResponse,
+    type QueryCheckVideoGenerationStatusParams as QueryCheckVideoGenerationStatusParams,
+  };
 }
 
 export { toFile, fileFromPath } from './uploads';
