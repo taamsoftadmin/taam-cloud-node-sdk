@@ -11,7 +11,15 @@ const client = new TaamCloud({
 describe('resource rerank', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: only required params', async () => {
-    const responsePromise = client.rerank.create({ documents: ['string'], model: 'model', query: 'query' });
+    const responsePromise = client.rerank.create({
+      documents: [
+        'Exercise improves cardiovascular health and reduces stress.',
+        'Proper nutrition is essential for overall well-being.',
+        'Sleep quality affects mental and physical performance.',
+      ],
+      model: 'mixr-v1',
+      query: 'What are the health benefits of exercise?',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -24,10 +32,14 @@ describe('resource rerank', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: required and optional params', async () => {
     const response = await client.rerank.create({
-      documents: ['string'],
-      model: 'model',
-      query: 'query',
-      top_n: 0,
+      documents: [
+        'Exercise improves cardiovascular health and reduces stress.',
+        'Proper nutrition is essential for overall well-being.',
+        'Sleep quality affects mental and physical performance.',
+      ],
+      model: 'mixr-v1',
+      query: 'What are the health benefits of exercise?',
+      top_n: 2,
     });
   });
 });

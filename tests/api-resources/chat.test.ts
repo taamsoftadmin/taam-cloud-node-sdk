@@ -12,8 +12,11 @@ describe('resource chat', () => {
   // skipped: tests are disabled for the time being
   test.skip('createCompletion: only required params', async () => {
     const responsePromise = client.chat.createCompletion({
-      messages: [{ content: 'content', role: 'user' }],
-      model: 'model',
+      messages: [
+        { content: 'You are a helpful assistant.', role: 'user' },
+        { content: 'Hello, how are you today?', role: 'user' },
+      ],
+      model: 'gpt-4',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -27,11 +30,14 @@ describe('resource chat', () => {
   // skipped: tests are disabled for the time being
   test.skip('createCompletion: required and optional params', async () => {
     const response = await client.chat.createCompletion({
-      messages: [{ content: 'content', role: 'user' }],
-      model: 'model',
-      max_tokens: 0,
+      messages: [
+        { content: 'You are a helpful assistant.', role: 'user' },
+        { content: 'Hello, how are you today?', role: 'user' },
+      ],
+      model: 'gpt-4',
+      max_tokens: 150,
       stream: true,
-      temperature: 0,
+      temperature: 0.7,
     });
   });
 });

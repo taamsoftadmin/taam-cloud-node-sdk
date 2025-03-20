@@ -5,7 +5,7 @@ import * as Core from '../core';
 
 export class Rerank extends APIResource {
   /**
-   * Rerank documents
+   * Reorder a list of documents based on their relevance to a query
    */
   create(body: RerankCreateParams, options?: Core.RequestOptions): Core.APIPromise<void> {
     return this._client.post('/v1/rerank', {

@@ -11,7 +11,7 @@ const client = new TaamCloud({
 describe('resource images', () => {
   // skipped: tests are disabled for the time being
   test.skip('generate: only required params', async () => {
-    const responsePromise = client.images.generate({ prompt: 'prompt' });
+    const responsePromise = client.images.generate({ prompt: 'A beautiful sunset over a calm ocean' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -24,9 +24,9 @@ describe('resource images', () => {
   // skipped: tests are disabled for the time being
   test.skip('generate: required and optional params', async () => {
     const response = await client.images.generate({
-      prompt: 'prompt',
+      prompt: 'A beautiful sunset over a calm ocean',
       model: 'dall-e-3',
-      n: 0,
+      n: 1,
       quality: 'standard',
       size: '1024x1024',
       style: 'natural',

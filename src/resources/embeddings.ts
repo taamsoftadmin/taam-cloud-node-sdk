@@ -5,7 +5,8 @@ import * as Core from '../core';
 
 export class Embeddings extends APIResource {
   /**
-   * Generate embeddings
+   * Create vector embeddings from text input for semantic search and similarity
+   * operations
    */
   create(body: EmbeddingCreateParams, options?: Core.RequestOptions): Core.APIPromise<unknown> {
     return this._client.post('/v1/embeddings', { body, ...options });
