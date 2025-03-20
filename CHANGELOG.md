@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2025-03-20)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/taamsoftadmin/taam-cloud-node-sdk/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Features
+
+* Update README.md ([3219eea](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/3219eeae0481b4d0931b758b910ad82e6dddc770))
+
+
+### Chores
+
+* **exports:** cleaner resource index imports ([#29](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/29)) ([5cb70fc](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/5cb70fc83481c103436164cd599d2a247f7d68e8))
+* **exports:** stop using path fallbacks ([#31](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/31)) ([b20338b](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/b20338bbc8160a33d2bda48254995d8b1fcd2053))
+
 ## 0.1.0-alpha.4 (2025-03-20)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/taamsoftadmin/taam-cloud-node-sdk/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
