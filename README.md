@@ -6,7 +6,6 @@ This library provides convenient access to the Taam Cloud REST API from server-s
 
 The REST API documentation can be found on [docs.taam.cloud](https://docs.taam.cloud). The full API of this library can be found in [api.md](api.md).
 
-It is generated with [Stainless](https://www.stainless.com/).
 
 ## Installation
 
