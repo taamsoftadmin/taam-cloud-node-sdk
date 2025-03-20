@@ -5,7 +5,7 @@ import * as Core from '../../core';
 
 export class Submit extends APIResource {
   /**
-   * Generate music
+   * Create AI-generated music based on text prompts
    */
   generateMusic(body: SubmitGenerateMusicParams, options?: Core.RequestOptions): Core.APIPromise<void> {
     return this._client.post('/suno/submit/music', {
