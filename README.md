@@ -27,7 +27,10 @@ const client = new TaamCloud({
 });
 
 async function main() {
-  const embedding = await client.embeddings.create({ input: ['string'], model: 'jina-embeddings-v3' });
+  const embedding = await client.embeddings.create({
+    input: ['Generate vector representations of this text'],
+    model: 'jina-embeddings-v3',
+  });
 }
 
 main();
@@ -46,7 +49,10 @@ const client = new TaamCloud({
 });
 
 async function main() {
-  const params: TaamCloud.EmbeddingCreateParams = { input: ['string'], model: 'jina-embeddings-v3' };
+  const params: TaamCloud.EmbeddingCreateParams = {
+    input: ['Generate vector representations of this text'],
+    model: 'jina-embeddings-v3',
+  };
   const embedding: unknown = await client.embeddings.create(params);
 }
 
@@ -65,7 +71,7 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const embedding = await client.embeddings
-    .create({ input: ['string'], model: 'jina-embeddings-v3' })
+    .create({ input: ['Generate vector representations of this text'], model: 'jina-embeddings-v3' })
     .catch(async (err) => {
       if (err instanceof TaamCloud.APIError) {
         console.log(err.status); // 400
@@ -109,7 +115,7 @@ const client = new TaamCloud({
 });
 
 // Or, configure per-request:
-await client.embeddings.create({ input: ['string'], model: 'jina-embeddings-v3' }, {
+await client.embeddings.create({ input: ['Generate vector representations of this text'], model: 'jina-embeddings-v3' }, {
   maxRetries: 5,
 });
 ```
@@ -126,7 +132,7 @@ const client = new TaamCloud({
 });
 
 // Override per-request:
-await client.embeddings.create({ input: ['string'], model: 'jina-embeddings-v3' }, {
+await client.embeddings.create({ input: ['Generate vector representations of this text'], model: 'jina-embeddings-v3' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -148,13 +154,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 const client = new TaamCloud();
 
 const response = await client.embeddings
-  .create({ input: ['string'], model: 'jina-embeddings-v3' })
+  .create({ input: ['Generate vector representations of this text'], model: 'jina-embeddings-v3' })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: embedding, response: raw } = await client.embeddings
-  .create({ input: ['string'], model: 'jina-embeddings-v3' })
+  .create({ input: ['Generate vector representations of this text'], model: 'jina-embeddings-v3' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(embedding);
@@ -262,7 +268,7 @@ const client = new TaamCloud({
 
 // Override per-request:
 await client.embeddings.create(
-  { input: ['string'], model: 'jina-embeddings-v3' },
+  { input: ['Generate vector representations of this text'], model: 'jina-embeddings-v3' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },

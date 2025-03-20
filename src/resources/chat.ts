@@ -5,7 +5,7 @@ import * as Core from '../core';
 
 export class Chat extends APIResource {
   /**
-   * Chat completions
+   * Generate chat completions based on provided conversation history
    */
   createCompletion(body: ChatCreateCompletionParams, options?: Core.RequestOptions): Core.APIPromise<void> {
     return this._client.post('/v1/chat/completions', {
