@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2025-03-22)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/taamsoftadmin/taam-cloud-node-sdk/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Bug Fixes
+
+* avoid type error in certain environments ([#33](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/33)) ([3b70258](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/3b702586ce8a491132540365c38f3cde962c2322))
+
 ## 0.1.0-alpha.5 (2025-03-20)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/taamsoftadmin/taam-cloud-node-sdk/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
