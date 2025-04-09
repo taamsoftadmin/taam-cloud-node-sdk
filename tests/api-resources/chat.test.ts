@@ -13,7 +13,7 @@ describe('resource chat', () => {
   test.skip('createCompletion: only required params', async () => {
     const responsePromise = client.chat.createCompletion({
       messages: [
-        { content: 'You are a helpful assistant.', role: 'user' },
+        { content: 'You are a helpful assistant.', role: 'system' },
         { content: 'Hello, how are you today?', role: 'user' },
       ],
       model: 'gpt-4',
@@ -31,7 +31,7 @@ describe('resource chat', () => {
   test.skip('createCompletion: required and optional params', async () => {
     const response = await client.chat.createCompletion({
       messages: [
-        { content: 'You are a helpful assistant.', role: 'user' },
+        { content: 'You are a helpful assistant.', role: 'system' },
         { content: 'Hello, how are you today?', role: 'user' },
       ],
       model: 'gpt-4',
