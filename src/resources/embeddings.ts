@@ -7,6 +7,14 @@ export class Embeddings extends APIResource {
   /**
    * Create vector embeddings from text input for semantic search and similarity
    * operations
+   *
+   * @example
+   * ```ts
+   * const embedding = await client.embeddings.create({
+   *   input: ['Generate vector representations of this text'],
+   *   model: 'jina-embeddings-v3',
+   * });
+   * ```
    */
   create(body: EmbeddingCreateParams, options?: Core.RequestOptions): Core.APIPromise<unknown> {
     return this._client.post('/v1/embeddings', { body, ...options });

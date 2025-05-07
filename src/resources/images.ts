@@ -6,6 +6,16 @@ import * as Core from '../core';
 export class Images extends APIResource {
   /**
    * Create images from text descriptions
+   *
+   * @example
+   * ```ts
+   * const response = await client.images.generate({
+   *   prompt: 'A beautiful sunset over a calm ocean',
+   *   model: 'dall-e-3',
+   *   n: 1,
+   *   size: '1024x1024',
+   * });
+   * ```
    */
   generate(body: ImageGenerateParams, options?: Core.RequestOptions): Core.APIPromise<ImageGenerateResponse> {
     return this._client.post('/v1/images/generations', { body, ...options });
