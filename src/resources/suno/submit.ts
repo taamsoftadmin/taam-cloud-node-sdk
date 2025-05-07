@@ -6,6 +6,15 @@ import * as Core from '../../core';
 export class Submit extends APIResource {
   /**
    * Create AI-generated music based on text prompts
+   *
+   * @example
+   * ```ts
+   * await client.suno.submit.generateMusic({
+   *   prompt: 'A relaxing jazz piano piece with soft drums',
+   *   tags: 'jazz, relaxing, piano',
+   *   title: 'Relaxing Jazz',
+   * });
+   * ```
    */
   generateMusic(body: SubmitGenerateMusicParams, options?: Core.RequestOptions): Core.APIPromise<void> {
     return this._client.post('/suno/submit/music', {

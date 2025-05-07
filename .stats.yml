@@ -1,2 +1,4 @@
 configured_endpoints: 12
 openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/taam-cloud%2Ftaam-cloud-7cf7483e1d6473d638b2a21b3d1a8090915cf1da58e8604637c02803690427a8.yml
+openapi_spec_hash: 50b2f9a8112dd93e07eb31f874cc118a
+config_hash: 0094d3af1788ed07bae142b02c1bb2a0

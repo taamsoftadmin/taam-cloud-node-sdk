@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2025-05-07)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/taamsoftadmin/taam-cloud-node-sdk/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#38](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/38)) ([26947e5](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/26947e5bb354e84d1f0f8e695ad9d2cef6301dba))
+* avoid type error in certain environments ([#33](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/33)) ([3b70258](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/3b702586ce8a491132540365c38f3cde962c2322))
+* **client:** send `X-Stainless-Timeout` in seconds ([#36](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/36)) ([0ea1166](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/0ea116643854a14f38bce5bbf5553257ee401afc))
+* **internal:** work around https://github.com/vercel/next.js/issues/76881 ([#35](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/35)) ([cc492ed](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/cc492ed87b1f6ca2cb88fd4a758adcdb2ac29f17))
+* **mcp:** remove unused tools.ts ([#39](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/39)) ([4ca1e96](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/4ca1e96e4a7b8f7e93d9094a7316f063bb730be0))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([d4b5b92](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/d4b5b92f7c0833ee63559f68abdf07931deb1ea4))
+* **ci:** bump node version for release workflows ([6cdc194](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/6cdc19428bf28fc606f2356b38a3f5d0d7a67f63))
+* **ci:** only use depot for staging repos ([a94615a](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/a94615af2d713d0ff0c3001523351277cb743ea1))
+* **client:** minor internal fixes ([40fb7fe](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/40fb7febd121cc2b8475dfe550cd1e3de88f1cc4))
+* **internal:** add aliases for Record and Array ([#37](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/37)) ([554059f](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/554059f6f3df462b131eb5acb5482f6553c690c1))
+* **internal:** codegen related update ([49c945e](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/49c945ee1ec155f881e10f977efd8a52267aac58))
+* **internal:** reduce CI branch coverage ([35e71ad](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/35e71adb8e141343e80d30d3287bf552406830b8))
+* **internal:** upload builds and expand CI branch coverage ([e482200](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/e482200e0b4cace43a293014ccd4dbc8d707e219))
+* **tests:** improve enum examples ([#40](https://github.com/taamsoftadmin/taam-cloud-node-sdk/issues/40)) ([f68d22c](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/f68d22c9208ef92abc5f5c689e0ba4540fc78b9e))
+
+
+### Documentation
+
+* add examples to tsdocs ([7b175ed](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/7b175eda4c1aee97801cdd615b7da64391a6379b))
+* **readme:** fix typo ([ca539ca](https://github.com/taamsoftadmin/taam-cloud-node-sdk/commit/ca539ca4badc320f5624c93066d3cb9ce20def7d))
+
 ## 0.1.0-alpha.5 (2025-03-20)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/taamsoftadmin/taam-cloud-node-sdk/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
