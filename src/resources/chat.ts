@@ -6,6 +6,22 @@ import * as Core from '../core';
 export class Chat extends APIResource {
   /**
    * Generate chat completions based on provided conversation history
+   *
+   * @example
+   * ```ts
+   * await client.chat.createCompletion({
+   *   messages: [
+   *     {
+   *       role: 'system',
+   *       content: 'You are a helpful assistant.',
+   *     },
+   *     { role: 'user', content: 'Hello, how are you today?' },
+   *   ],
+   *   model: 'gpt-4',
+   *   max_tokens: 150,
+   *   temperature: 0.7,
+   * });
+   * ```
    */
   createCompletion(body: ChatCreateCompletionParams, options?: Core.RequestOptions): Core.APIPromise<void> {
     return this._client.post('/v1/chat/completions', {

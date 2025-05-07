@@ -6,6 +6,17 @@ import * as Core from '../core';
 export class VideoGeneration extends APIResource {
   /**
    * Create dynamic videos from text descriptions or images
+   *
+   * @example
+   * ```ts
+   * const videoGeneration = await client.videoGeneration.create(
+   *   {
+   *     model: 'T2V-01-Director',
+   *     prompt:
+   *       'A spaceship landing on a distant planet [camera panning right]',
+   *   },
+   * );
+   * ```
    */
   create(
     body: VideoGenerationCreateParams,
